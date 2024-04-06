@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   validate-pr-title:
-    uses: rocketblend/.github/workflows/validate-pr-title.yaml@latest
+    uses: ./github/workflows/validate-pr-title.yaml
     permissions:
       pull-requests: write
 
