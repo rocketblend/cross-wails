@@ -3,7 +3,7 @@
 Docker Image for Cross Compiling [Wails Applications](https://wails.io/)
 
 > [!NOTE]  
-> This repository serves as a fork of the original [Cross Wails repository](https://github.com/abjrcode/cross-wails). It was detached from the original due to PRs defaulting to that directory, and adjustments were made to tailor it for this projects needs.
+> This repository serves as a fork of the original [Cross Wails repository](https://github.com/abjrcode/cross-wails). It was detached from the original due to PRs defaulting to that repository, and adjustments being needed to tailor it for our needs.
 
 ## Usage
 
