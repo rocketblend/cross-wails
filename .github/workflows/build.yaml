@@ -1,4 +1,4 @@
-name: Linux Build
+name: Build
 
 on:
   workflow_call:
@@ -21,7 +21,7 @@ on:
         required: true
 
 jobs:
-  Build:
+  build:
     runs-on: ubuntu-latest
 
     timeout-minutes: 50
