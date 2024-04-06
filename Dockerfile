@@ -2,6 +2,7 @@
 
 # Copyright (c) 2019 Goren G
 # Copyright (c) 2020 Artur Troian
+# Copyright (c) 2024 RocketBlend
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +28,8 @@
 
 FROM debian:bullseye as builder
 
-LABEL maintainer="Ibrahim Najjar <https://github.com/abjrcode/>"
-LABEL "org.opencontainers.image.source"="https://github.com/abjrcode/cross-wails"
+LABEL maintainer="RocketBlend <https://github.com/rocketblend/>"
+LABEL "org.opencontainers.image.source"="https://github.com/rocketblend/cross-wails"
 
 ENV DEBIAN_FRONTEND=noninteractive
 ARG DPKG_ARCH="amd64 arm64"

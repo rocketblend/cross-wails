@@ -2,18 +2,20 @@
 
 Docker Image for Cross Compiling [Wails Applications](https://wails.io/)
 
+> [!NOTE]  
+> This repository serves as a fork of the original [Cross Wails repository](https://github.com/abjrcode/cross-wails). It was detached from the original due to PRs defaulting to that repository, and adjustments being needed to tailor it for our needs.
+
 ## Usage
 
-You can use this image as a base image in your own Dockerfile:
+You can utilize this Docker image as a base image in your own Dockerfile:
 
 ```dockerfile
-FROM ghcr.io/abjrcode/cross-wails:v2.7.1 as base
+FROM ghcr.io/rocketblend/cross-wails:v2.7.1 as base
 
 # Use `wails build` to build your application
 ```
 
-Check out the [example](./example) directory for a complete example that demonstrates
-building a Wails applications for Linux ARM64, Linux AMD64 and Windows AMD64
+For an illustrative example of building Wails applications for Linux ARM64, Linux AMD64, and Windows AMD64, as well as CI/CD workflows, you can refer to the [RocketBlend Desktop](https://github.com/rocketblend/rocketblend-desktop) project.
 
 ## Details
 
@@ -28,4 +30,4 @@ building a Wails applications for Linux ARM64, Linux AMD64 and Windows AMD64
   to minimize the image size and build time
   - It is still a bit over 4GB though :(
 
-You can also [check the background stroy on my blog](https://madin.dev/cross-wails) if you are interested in more details :D
+For additional insights, you can visit the original author's [blog](https://madin.dev/cross-wails), where they delve into the background story behind this repository.
