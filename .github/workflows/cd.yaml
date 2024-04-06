@@ -1,4 +1,4 @@
-name: Main
+name: CI
 
 on:
   push:
@@ -7,17 +7,15 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: cross-wails-main
+  group: cross-wails-cd
   cancel-in-progress: true
 
 jobs:
-  LinuxCI:
-    uses: ./.github/workflows/build-linux.yaml
-
+  publish:
+    uses: ./.github/workflows/build.yaml
     permissions:
       contents: read
       packages: write
-
     with:
       PUSH_IMAGE: true
       GO_VERSION: "1.21.5"

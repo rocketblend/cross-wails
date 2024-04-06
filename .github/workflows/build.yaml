@@ -54,7 +54,7 @@ jobs:
         env:
           WAILS_VERSION: ${{ inputs.WAILS_VERSION }}
         run: |
-          RELEASE_TAG="ghcr.io/abjrcode/cross-wails:$WAILS_VERSION" && echo $RELEASE_TAG && echo "releaseTag=$RELEASE_TAG" >> $GITHUB_OUTPUT
+          RELEASE_TAG="ghcr.io/rocketblend/cross-wails:$WAILS_VERSION" && echo $RELEASE_TAG && echo "releaseTag=$RELEASE_TAG" >> $GITHUB_OUTPUT
 
       - name: Build Docker Image
         uses: docker/build-push-action@v4
@@ -64,8 +64,8 @@ jobs:
           load: false
           platforms: linux/amd64,linux/arm64
           cache-from: |
-            type=registry,ref=ghcr.io/abjrcode/cross-wails/cache
-          cache-to: type=registry,ref=ghcr.io/abjrcode/cross-wails/cache,mode=max
+            type=registry,ref=ghcr.io/rocketblend/cross-wails/cache
+          cache-to: type=registry,ref=ghcr.io/rocketblend/cross-wails/cache,mode=max
           build-args: |
             GO_VERSION=${{ inputs.GO_VERSION }}
             WAILS_VERSION=${{ inputs.WAILS_VERSION }}

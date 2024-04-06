@@ -16,15 +16,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  LinuxCI:
+  validate-pr-title:
+    uses: rocketblend/.github/workflows/validate-pr-title.yaml
+    permissions:
+      pull-requests: write
+
+  build:
     if: ${{ !github.event.pull_request.draft }}
-
-    uses: ./.github/workflows/build-linux.yaml
-
+    uses: ./.github/workflows/build.yaml
     permissions:
       contents: read
       packages: write
-
     with:
       PUSH_IMAGE: false
       GO_VERSION: "1.21.5"
