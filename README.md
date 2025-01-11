@@ -10,7 +10,7 @@ Docker Image for Cross Compiling [Wails Applications](https://wails.io/)
 You can utilize this Docker image as a base image in your own Dockerfile:
 
 ```dockerfile
-FROM ghcr.io/rocketblend/cross-wails:v2.8.0 as base
+FROM ghcr.io/rocketblend/cross-wails:v2.9.2 as base
 
 # Use `wails build` to build your application
 ```
@@ -25,7 +25,7 @@ For an illustrative example of building Wails applications for Linux ARM64, Linu
       recommend using [goreleaser-cross-toolchain](https://github.com/goreleaser/goreleaser-cross-toolchains/tree/main)
   - You can also use NSIS for creating Windows installers
 - It doesn't support cross compiling to MacOS because Wails doesn't support it yet
-- The image tag is the same as Wails version, e.g. `v2.8.0`
+- The image tag is the same as Wails version, e.g. `v2.9.2`
 - The image is adopted from [goreleaser-cross-toolchain](https://github.com/goreleaser/goreleaser-cross-toolchains/tree/main) but with stripped down dependencies
   to minimize the image size and build time
   - It is still a bit over 4GB though :(
