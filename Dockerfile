@@ -26,7 +26,7 @@
 # https://github.com/goreleaser/goreleaser-cross-toolchains/blob/main/Dockerfile
 
 
-FROM debian:bullseye as builder
+FROM debian:multiarch AS builder
 
 LABEL maintainer="RocketBlend <https://github.com/rocketblend/>"
 LABEL "org.opencontainers.image.source"="https://github.com/rocketblend/cross-wails"
