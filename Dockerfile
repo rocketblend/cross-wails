@@ -26,7 +26,7 @@
 # https://github.com/goreleaser/goreleaser-cross-toolchains/blob/main/Dockerfile
 
 
-FROM debian:multiarch AS builder
+FROM debian:bullseye AS builder
 
 LABEL maintainer="RocketBlend <https://github.com/rocketblend/>"
 LABEL "org.opencontainers.image.source"="https://github.com/rocketblend/cross-wails"
@@ -59,13 +59,22 @@ RUN set -x; \
   && ln -snf $(pwd)/llvm-mingw-${MINGW_VERSION}-ucrt-${MINGW_HOST}-${MINGW_ARCH} /llvm-mingw
 
 # Install Libgtk, webkit and NSIS
-RUN dpkg --add-architecture amd64 \
-  && apt-get -qq update \
-  && apt-get -qq install -y libgtk-3-dev:amd64 libwebkit2gtk-4.0-dev:amd64
+RUN dpkg --add-architecture amd64 && dpkg --add-architecture arm64 && \
+apt-get update && apt-get install -y \
+    libgtk-3-dev:amd64 \
+    libwebkit2gtk-4.0-dev:amd64 && \
+apt-mark hold libgtk-3-dev:amd64 libwebkit2gtk-4.0-dev:amd64 && \
+apt-get install -y \
+    libgtk-3-dev:arm64 \
+    libwebkit2gtk-4.0-dev:arm64
 
-RUN dpkg --add-architecture arm64 \
-  && apt-get -qq update \
-  && apt-get -qq install -y libgtk-3-dev:arm64 libwebkit2gtk-4.0-dev:arm64
+# RUN dpkg --add-architecture amd64 \
+#   && apt-get -qq update \
+#   && apt-get -qq install -y libgtk-3-dev:amd64 libwebkit2gtk-4.0-dev:amd64
+
+# RUN dpkg --add-architecture arm64 \
+#   && apt-get -qq update \
+#   && apt-get -qq install -y libgtk-3-dev:arm64 libwebkit2gtk-4.0-dev:arm64
 
 ARG NODE_MAJOR_VERSION=20
 
