@@ -32,8 +32,8 @@ LABEL maintainer="RocketBlend <https://github.com/rocketblend/>"
 LABEL "org.opencontainers.image.source"="https://github.com/rocketblend/cross-wails"
 
 ENV DEBIAN_FRONTEND=noninteractive
-ARG DPKG_ARCH="amd64 arm64"
-ARG CROSSBUILD_ARCH="amd64 arm64"
+ARG DPKG_ARCH="amd64"
+ARG CROSSBUILD_ARCH="amd64"
 ARG MINGW_VERSION=20230130
 ARG MINGW_HOST="ubuntu-18.04"
 
@@ -54,27 +54,14 @@ RUN set -x; \
         libarchive-tools \
         mingw-w64 \
         ${crossbuild_pkgs} \
-  && MINGW_ARCH=$(echo -n $TARGETARCH | sed -e 's/arm64/aarch64/g' | sed -e 's/amd64/x86_64/g') \
+  && MINGW_ARCH=$(echo -n $TARGETARCH | sed -e 's/amd64/x86_64/g') \
   && wget -qO - "https://github.com/mstorsjo/llvm-mingw/releases/download/${MINGW_VERSION}/llvm-mingw-${MINGW_VERSION}-ucrt-${MINGW_HOST}-${MINGW_ARCH}.tar.xz" | bsdtar -xf - \
   && ln -snf $(pwd)/llvm-mingw-${MINGW_VERSION}-ucrt-${MINGW_HOST}-${MINGW_ARCH} /llvm-mingw
 
 # Install Libgtk, webkit and NSIS
-RUN dpkg --add-architecture amd64 && dpkg --add-architecture arm64 && \
-apt-get update && apt-get install -y \
-    libgtk-3-dev:amd64 \
-    libwebkit2gtk-4.0-dev:amd64 && \
-apt-mark hold libgtk-3-dev:amd64 libwebkit2gtk-4.0-dev:amd64 && \
-apt-get install -y \
-    libgtk-3-dev:arm64 \
-    libwebkit2gtk-4.0-dev:arm64
-
-# RUN dpkg --add-architecture amd64 \
-#   && apt-get -qq update \
-#   && apt-get -qq install -y libgtk-3-dev:amd64 libwebkit2gtk-4.0-dev:amd64
-
-# RUN dpkg --add-architecture arm64 \
-#   && apt-get -qq update \
-#   && apt-get -qq install -y libgtk-3-dev:arm64 libwebkit2gtk-4.0-dev:arm64
+RUN dpkg --add-architecture amd64 \
+  && apt-get -qq update \
+  && apt-get -qq install -y libgtk-3-dev:amd64 libwebkit2gtk-4.0-dev:amd64
 
 ARG NODE_MAJOR_VERSION=20
 

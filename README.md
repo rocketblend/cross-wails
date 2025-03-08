@@ -15,12 +15,15 @@ FROM ghcr.io/rocketblend/cross-wails:v2.9.2 as base
 # Use `wails build` to build your application
 ```
 
-For an illustrative example of building Wails applications for Linux ARM64, Linux AMD64, and Windows AMD64, as well as CI/CD workflows, you can refer to the [RocketBlend Desktop](https://github.com/rocketblend/rocketblend-desktop) project.
+For an illustrative example of building Wails applications for Linux AMD64, and Windows AMD64, as well as CI/CD workflows, you can refer to the [RocketBlend Desktop](https://github.com/rocketblend/rocketblend-desktop) project.
+
+> [!NOTE]  
+> Does not support ARM architecture due to changes with `libwebkit2gtk-4.0-dev` not allowing multiple architectures to be install at the same time.
 
 ## Details
 
 - Image can cross-compile Wails applications that depend on CGO
-  - Supports cross compiling to Linux ARM64 & AMD64 and Windows AMD64
+  - Supports cross compiling to Linux AMD64 and Windows AMD64
     - Can be extended to support more targets and architectures but then I would
       recommend using [goreleaser-cross-toolchain](https://github.com/goreleaser/goreleaser-cross-toolchains/tree/main)
   - You can also use NSIS for creating Windows installers
