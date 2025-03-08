@@ -18,7 +18,7 @@ FROM ghcr.io/rocketblend/cross-wails:v2.10.1 as base
 For an illustrative example of building Wails applications for Linux AMD64, and Windows AMD64, as well as CI/CD workflows, you can refer to the [RocketBlend Desktop](https://github.com/rocketblend/rocketblend-desktop) project.
 
 > [!NOTE]  
-> Does not support ARM architecture due to changes with `libwebkit2gtk-4.0-dev` not allowing multiple architectures to be install at the same time.
+> Due to changes with `libwebkit2gtk-4.0-dev` no longer allowing multiple architectures to be install at the same time, I've remove support for ARM (for now).
 
 ## Details
 
