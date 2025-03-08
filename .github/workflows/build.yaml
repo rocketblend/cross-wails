@@ -9,7 +9,7 @@ on:
         required: true
       GO_VERSION:
         type: string
-        description: "Full Go version to use, e.g. 1.22.1"
+        description: "Full Go version to use, e.g. 1.24.1"
         required: true
       NODE_VERSION:
         type: string
@@ -17,7 +17,7 @@ on:
         required: true
       WAILS_VERSION:
         type: string
-        description: "Wails version to use, e.g. v2.8.0"
+        description: "Wails version to use, e.g. v2.10.1"
         required: true
 
 jobs:
@@ -60,7 +60,7 @@ jobs:
           push: ${{ inputs.PUSH_IMAGE }}
           tags: ${{ steps.calculateDockerTag.outputs.releaseTag }}
           load: false
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           cache-from: |
             type=registry,ref=ghcr.io/rocketblend/cross-wails/cache
           cache-to: type=registry,ref=ghcr.io/rocketblend/cross-wails/cache,mode=max

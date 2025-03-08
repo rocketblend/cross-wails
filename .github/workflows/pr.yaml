@@ -29,6 +29,6 @@ jobs:
       packages: write
     with:
       PUSH_IMAGE: false
-      GO_VERSION: "1.22.1"
+      GO_VERSION: "1.24.1"
       NODE_VERSION: "20"
-      WAILS_VERSION: "v2.8.0"
+      WAILS_VERSION: "v2.10.1"
