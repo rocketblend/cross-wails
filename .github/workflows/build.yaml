@@ -9,7 +9,7 @@ on:
         required: true
       GO_VERSION:
         type: string
-        description: "Full Go version to use, e.g. 1.22.1"
+        description: "Full Go version to use, e.g. 1.24.1"
         required: true
       NODE_VERSION:
         type: string
@@ -17,7 +17,7 @@ on:
         required: true
       WAILS_VERSION:
         type: string
-        description: "Wails version to use, e.g. v2.9.2"
+        description: "Wails version to use, e.g. v2.10.1"
         required: true
 
 jobs:
